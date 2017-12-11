@@ -26,7 +26,7 @@ public class UDPServer{
 				System.out.println("Esperando...");
 				serverSocket.receive(receivePacket);
 	 
-				String sentence = new String(receivePacket.getData());
+				String sentence = new String(receivePacket.getData()).trim();
 				Date date = Calendar.getInstance().getTime();
 				SimpleDateFormat format = new SimpleDateFormat("H:m:s d/M/Y");
 				System.out.println("["+format.format(date)+"]"+"["+receivePacket.getAddress().getHostAddress()+"]> "+sentence);
@@ -72,7 +72,7 @@ public class UDPServer{
 			String command = cmdSplit[0];
 			List<String> params = getParams(cmdSplit);
 			
-			sendData = "Errado".getBytes();
+			sendData = "Comando Inválido!".getBytes();
 			Class<CommandList> commandList = CommandList.class;
 			for(Method method : commandList.getMethods()){
 				if(method.getName().equalsIgnoreCase(cmdSplit[0])){

@@ -1,0 +1,16 @@
+Aluno:Cicero Anderson Fernandes Holanda    Matricula:388714
+
+Minha aplicação é como um canivete suiço, tem capacidade para ter qualquer funcionalidade
+basta adicionar um metodo na classe CommandList seguido o padrão em que o retorno e 
+os parametros tem que ser do tipo String e o metodo tem que ser publico e statico.
+O servidor UDPServer.class reconhecera um comando no seguinte formato:
+
+<nomeFuncao> <param> ...
+
+<nomeFuncao> = tem que ser igual o nome de alguma funcao que esta na classe CommandList
+<param> ... = tem que ser na mesma quantidade de parametros suportado pelo metodo  que esta na classe CommandList
+ex:
+	add 1 2 => 3
+	add 1 2 3 => Comando Inválido!
+	
+Sem alterar o UDPserver é possivel adicionar novas funcionalidades, vai da imaginação do programador.

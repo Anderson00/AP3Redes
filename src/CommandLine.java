@@ -24,7 +24,7 @@ public class CommandLine {
 			if(cmdSplit[0].equals(CommandList.OPEN)){	
 				if(client != null && client.serverExists()){
 					System.out.println("Já esta associado");
-					break;
+					continue;
 				}
 				if(cmdSplit.length > 1){
 					String ip = cmdSplit[1];
@@ -43,10 +43,14 @@ public class CommandLine {
 				}else{
 					System.out.println("Comando inválido");
 				}		
-			}else{	
+			}else if(cmdSplit[0].equals(CommandList.CLOSE)){
+				this.client = null;
+			}else if(cmdSplit[0].equals(CommandList.EXIT)){
+				System.exit(0);
+			}
+			else{	
 				if(client != null && client.serverExists()){
 					
-					System.out.println("--- "+cmd);
 					String response = client.sendCommand(cmd);
 					System.out.println(response);
 				}else{

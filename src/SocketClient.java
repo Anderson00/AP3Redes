@@ -47,7 +47,7 @@ public class SocketClient {
 			String resposta = "";
 			try{
 				cliente.receive(receivePacket);      
-	        	resposta = new String( receivePacket.getData());
+	        	resposta = new String( receivePacket.getData()).trim();
 			}catch(SocketTimeoutException e){
 				System.out.println("Timeout reached!!! " + e);	            
 			}

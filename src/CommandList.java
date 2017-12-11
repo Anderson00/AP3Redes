@@ -1,12 +1,15 @@
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
+import annotations.Descricao;
+
 public class CommandList {
 	public static final int DEFAULT_PORT = 10000;
 	public static final String HELP = "?"; //to request help or information about the commands
 	public static final String HELP2 = "help";
 	public static final String BYE = "bye";
 	public static final String QUIT = "quit";
+	public static final String EXIT = "exit";
 	
 	public static final String ADD = "add";
 	public static final String SUB = "sub";
@@ -16,6 +19,28 @@ public class CommandList {
 	
 	private CommandList(){}
 	
+	public static String help(String cmd){
+		String str = "Comando não encontrado";
+		
+		Class<CommandList> cmdList = CommandList.class;
+		
+		for(Method m : cmdList.getMethods()){
+			if(m.getName().equals(cmd.trim())){
+				if(m.isAnnotationPresent(Descricao.class)){
+					Descricao desc = m.getAnnotation(Descricao.class);
+					if(desc != null)
+						return desc.value();
+				}
+				else
+					return "Nada encontrado";
+				
+			}
+		}
+		
+		return str;
+	}
+	
+	@Descricao("Lista todos os comandos")
 	public static String listCmds(){
 		StringBuffer strBuffer = new StringBuffer(50);
 		Class<CommandList> commandList = CommandList.class;
@@ -67,5 +92,10 @@ public class CommandList {
 		if(fib == 1 || fib == 2)
 			return 1;
 		return fibonacci_recursive(fib-1)+fibonacci_recursive(fib-2);
+	}
+	
+	public static String square(String n){
+		int numero = Integer.parseInt(n);
+		return numero*numero+"";
 	}
 }
