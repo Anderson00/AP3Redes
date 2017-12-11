@@ -1,7 +1,7 @@
-Aluno:Cicero Anderson Fernandes Holanda    Matricula:388714
+Aluno:Cicero Anderson
 
-Minha aplicaÁ„o È como um canivete suiÁo, tem capacidade para ter qualquer funcionalidade
-basta adicionar um metodo na classe CommandList seguido o padr„o em que o retorno e 
+Minha aplica√ß√£o √© como um canivete sui√ßo, tem capacidade para ter qualquer funcionalidade
+basta adicionar um metodo na classe CommandList seguido o padr√£o em que o retorno e 
 os parametros tem que ser do tipo String e o metodo tem que ser publico e statico.
 O servidor UDPServer.class reconhecera um comando no seguinte formato:
 
@@ -11,6 +11,6 @@ O servidor UDPServer.class reconhecera um comando no seguinte formato:
 <param> ... = tem que ser na mesma quantidade de parametros suportado pelo metodo  que esta na classe CommandList
 ex:
 	add 1 2 => 3
-	add 1 2 3 => Comando Inv·lido!
+	add 1 2 3 => Comando Inv√°lido!
 	
-Sem alterar o UDPserver È possivel adicionar novas funcionalidades, vai da imaginaÁ„o do programador.
+Sem alterar o UDPserver √© possivel adicionar novas funcionalidades, vai da imagina√ß√£o do programador.
