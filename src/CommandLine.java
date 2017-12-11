@@ -46,6 +46,7 @@ public class CommandLine {
 			}else{	
 				if(client != null && client.serverExists()){
 					
+					System.out.println("--- "+cmd);
 					String response = client.sendCommand(cmd);
 					System.out.println(response);
 				}else{

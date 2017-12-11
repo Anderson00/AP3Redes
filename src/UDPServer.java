@@ -15,11 +15,12 @@ public class UDPServer{
 	
 	
 	public static void main(String args[]){
-		try {
-			byte[] sendData = new byte[1024];
-			byte[] receiveData = new byte[1024];
+		try {			
+			System.out.println("----------| UCMP v1.0 |----------");
 			DatagramSocket serverSocket = new DatagramSocket(CommandList.DEFAULT_PORT);
 			while(true){
+				byte[] sendData = new byte[1024];
+				byte[] receiveData = new byte[1024];
 				DatagramPacket receivePacket = new DatagramPacket(receiveData,
 						receiveData.length);
 				System.out.println("Esperando...");

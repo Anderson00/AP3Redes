@@ -9,7 +9,7 @@ public class Main {
 	}
 	
 	public static void main(String args[]){
-		System.out.println("----------| UFTP v1.0 |----------");
+		System.out.println("----------| UCMP v1.0 |----------");
 		new Main().commandLine();//Inicializa linha de commando
 	}
 }
