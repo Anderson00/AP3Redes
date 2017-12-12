@@ -45,11 +45,20 @@ public class SocketClient {
 			
 			DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 			String resposta = "";
-			try{
-				cliente.receive(receivePacket);      
-	        	resposta = new String( receivePacket.getData()).trim();
-			}catch(SocketTimeoutException e){
-				System.out.println("Timeout reached!!! " + e);	            
+			int tentativa = 0;
+			while(tentativa < 3){
+				try{
+					cliente.receive(receivePacket);      
+		        	resposta = new String( receivePacket.getData()).trim();
+		        	break;
+				}catch(SocketTimeoutException e){
+					System.out.println("Timeout reached!!! " + e);	
+					if(tentativa+1 >= 3){
+						System.out.println("Maximo de tentativas atingido");
+					}
+					System.out.println("Tentando: "+tentativa);
+					tentativa++;
+				}
 			}
 	        
 	        return resposta;

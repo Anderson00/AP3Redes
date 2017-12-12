@@ -17,15 +17,15 @@ public class UDPServer{
 	public static void main(String args[]){
 		try {			
 			System.out.println("----------| UCMP v1.0 |----------");
+			System.out.println("Esperando...");
 			DatagramSocket serverSocket = new DatagramSocket(CommandList.DEFAULT_PORT);
 			while(true){
 				byte[] sendData = new byte[1024];
 				byte[] receiveData = new byte[1024];
 				DatagramPacket receivePacket = new DatagramPacket(receiveData,
 						receiveData.length);
-				System.out.println("Esperando...");
-				serverSocket.receive(receivePacket);
-	 
+				
+				serverSocket.receive(receivePacket);	 
 				String sentence = new String(receivePacket.getData()).trim();
 				Date date = Calendar.getInstance().getTime();
 				SimpleDateFormat format = new SimpleDateFormat("H:m:s d/M/Y");
@@ -75,7 +75,7 @@ public class UDPServer{
 			sendData = "Comando Inválido!".getBytes();
 			Class<CommandList> commandList = CommandList.class;
 			for(Method method : commandList.getMethods()){
-				if(method.getName().equalsIgnoreCase(cmdSplit[0])){
+				if(method.getName().equals(cmdSplit[0])){
 					
 					try {
 						sendData = ((String)method.invoke(null, params.toArray())).getBytes();
